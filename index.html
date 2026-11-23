@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ModelPenny: what AI really costs you</title>
-<meta name="description" content="We work out what AI really costs you, so you don't have to. We will check every price on the provider's own page and price each call your app makes, without ever seeing your prompts or keys.">
+<title>ModelPenny: AI prices, kept up to date</title>
+<meta name="description" content="AI prices change. Your code shouldn't have to. We keep every model's price up to date, and you track your spend by anything you label, across every provider.">
 <link rel="canonical" href="https://modelpenny.com/">
 <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)">
@@ -12,17 +12,20 @@
 <meta property="og:url" content="https://modelpenny.com/">
 <meta property="og:site_name" content="ModelPenny">
 <meta property="og:title" content="ModelPenny">
-<meta property="og:description" content="We work out what AI really costs you, so you don't have to.">
+<meta property="og:description" content="AI prices change. Your code shouldn't have to.">
 <meta property="og:image" content="https://modelpenny.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The ModelPenny coin and the words: We work out what AI really costs you, so you don't have to.">
+<meta property="og:image:alt" content="The ModelPenny coin above a receipt, and the words: AI prices change. Your code shouldn't have to.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="ModelPenny, in plain text for AI assistants">
 <link rel="preload" href="/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "ModelPenny", "url": "https://modelpenny.com/", "description": "AI model prices kept up to date, and the means to track AI spend by any label across every provider. Not open yet.", "publisher": {"@type": "Organization", "name": "Ordayer", "url": "https://ordayer.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does ModelPenny sit between my app and the AI provider?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your app keeps calling each provider directly. After a call, our SDK sends us the numbers in the background, so a slow or missing ModelPenny never touches your users."}}, {"@type": "Question", "name": "What will ModelPenny store?", "acceptedAnswer": {"@type": "Answer", "text": "Only what your app sends: the provider, the model, the token counts, the time, and the labels you choose. Never your prompts, your answers or your provider keys."}}, {"@type": "Question", "name": "How do the prices stay current?", "acceptedAnswer": {"@type": "Answer", "text": "We read each provider's own pricing page, keep the history of every price, and show the source and when we last checked it, so each call is priced at the rate that was live when you made it."}}, {"@type": "Question", "name": "Can I see the cost per customer or per feature?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Label each call however you like, such as by customer, feature or team, and see the cost by any of them, across every provider you use."}}]}</script>
 </head>
 <body>
 <header class="site-header shell">
@@ -34,47 +37,136 @@
   </a>
 </header>
 
-<main class="hero shell" id="main">
-  <div class="hero__grid">
+<main id="main">
+  <section class="hero shell">
     <div>
-      <h1 class="hero__title">We work out what AI really costs you, so you don't have to.</h1>
-      <p class="hero__lede">Every provider prices AI its own way, prices change without warning, and some calls cost twice as much with long prompts or at busy hours. We will <strong>keep every price up to date</strong>, price each call your app makes across every provider you use, and show you the real total, without ever seeing your prompts or your keys.</p>
+      <h1>AI prices change. Your code shouldn't have to.</h1>
+      <p class="hero__line">We keep every model's price up to date, and you track your spend by anything you label, across every provider.</p>
       <div class="hero__open">
         <a class="button" href="mailto:contact@ordayer.com?subject=Tell%20me%20when%20ModelPenny%20opens">Tell me when it opens</a>
-        <p class="status">Not open yet. We are building it now.</p>
+        <span class="status">Not open yet.</span>
       </div>
     </div>
-
-    <figure class="receipt">
-      <table>
-        <caption>
-          <span class="receipt__title">One day of AI calls, across three providers</span>
-          <span class="receipt__note">An example, not real prices.</span>
-        </caption>
-        <thead>
-          <tr><th scope="col">Charge</th><th scope="col">Tokens</th><th scope="col">Cost (USD)</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Input tokens</th><td class="tokens">1,204,330</td><td>$0.1204</td></tr>
-          <tr><th scope="row">Output tokens</th><td class="tokens">146,900</td><td>$0.0735</td></tr>
-          <tr class="subtotal"><th scope="row">The price you see</th><td></td><td>$0.1939</td></tr>
-        </tbody>
-        <tbody>
-          <tr class="group"><th scope="rowgroup" colspan="3">Easy to miss</th></tr>
-          <tr><th scope="row">Thinking tokens</th><td class="tokens">312,400</td><td>$0.1562</td></tr>
-          <tr><th scope="row">Long prompts, at 2x</th><td class="tokens">420,000</td><td>$0.0420</td></tr>
-          <tr><th scope="row">Busy hours, at 2x</th><td class="tokens">210,000</td><td>$0.0210</td></tr>
-        </tbody>
-        <tfoot>
-          <tr><th scope="row" colspan="2">What you really pay</th><td>$0.4131</td></tr>
-        </tfoot>
-      </table>
-      <p class="receipt__proof">Prices checked at the source, 4 minutes ago.</p>
+    <figure class="art">
+      <picture>
+        <source srcset="/assets/mark-on-dark.svg" media="(prefers-color-scheme: dark)">
+        <img class="coin" src="/assets/mark.svg" alt="" width="211" height="178">
+      </picture>
+      <svg viewBox="0 0 260 520" aria-hidden="true">
+        <defs>
+          <clipPath id="paper"><path d="M0 14 L10 4 L20 14 L30 4 L40 14 L50 4 L60 14 L70 4 L80 14 L90 4 L100 14 L110 4 L120 14 L130 4 L140 14 L150 4 L160 14 L170 4 L180 14 L190 4 L200 14 L210 4 L220 14 L230 4 L240 14 L250 4 L260 14 V506 L250 516 L240 506 L230 516 L220 506 L210 516 L200 506 L190 516 L180 506 L170 516 L160 506 L150 516 L140 506 L130 516 L120 506 L110 516 L100 506 L90 516 L80 506 L70 516 L60 506 L50 516 L40 506 L30 516 L20 506 L10 516 L0 506 Z"/></clipPath>
+        </defs>
+        <g clip-path="url(#paper)">
+          <rect width="260" height="520" fill="var(--surface)"/>
+          <!-- heading -->
+          <rect x="26" y="46" width="96" height="7" rx="3.5" fill="var(--ink)"/>
+          <rect x="26" y="62" width="138" height="5" rx="2.5" fill="var(--bar-soft)"/>
+          <!-- the lines you see -->
+          <g fill="var(--bar)"><circle cx="30" cy="106.5" r="4" fill="var(--sapphire)"/><rect x="42" y="104" width="96" height="5" rx="2.5"/><circle cx="30" cy="140.5" r="4" fill="var(--rosewood)"/><rect x="42" y="138" width="78" height="5" rx="2.5"/></g>
+          <g fill="var(--bar-strong)"><rect x="196" y="104" width="38" height="5" rx="2.5"/><rect x="202" y="138" width="32" height="5" rx="2.5"/></g>
+          <g stroke="var(--line-strong)" stroke-width="1" stroke-dasharray="1 3"><line x1="26" y1="123" x2="234" y2="123"/></g>
+          <line x1="26" y1="158" x2="234" y2="158" stroke="var(--line-strong)" stroke-width="1"/>
+          <rect x="26" y="174" width="70" height="5" rx="2.5" fill="var(--bar-strong)"/><rect x="190" y="174" width="44" height="5" rx="2.5" fill="var(--bar-strong)"/>
+          <!-- the lines that are easy to miss -->
+          <rect x="26" y="222" width="58" height="6" rx="3" fill="var(--ink)"/>
+          <g fill="var(--bar)"><circle cx="30" cy="254.5" r="4" fill="var(--lagoon)"/><rect x="42" y="252" width="104" height="5" rx="2.5"/><circle cx="30" cy="288.5" r="4" fill="var(--sage)"/><rect x="42" y="286" width="84" height="5" rx="2.5"/><circle cx="30" cy="322.5" r="4" fill="var(--heather)"/><rect x="42" y="320" width="92" height="5" rx="2.5"/></g>
+          <g fill="var(--ink)"><rect x="194" y="252" width="40" height="5" rx="2.5"/><rect x="204" y="286" width="30" height="5" rx="2.5"/><rect x="200" y="320" width="34" height="5" rx="2.5"/></g>
+          <g stroke="var(--line-strong)" stroke-width="1" stroke-dasharray="1 3"><line x1="26" y1="237" x2="234" y2="237"/><line x1="26" y1="271" x2="234" y2="271"/><line x1="26" y1="305" x2="234" y2="305"/></g>
+          <!-- the total, under a double rule -->
+          <line x1="26" y1="352" x2="234" y2="352" stroke="var(--line-strong)" stroke-width="1"/>
+          <line x1="26" y1="356" x2="234" y2="356" stroke="var(--line-strong)" stroke-width="1"/>
+          <text x="26" y="392" font-family="IBM Plex Mono, monospace" font-size="13" fill="var(--ink-muted)">Total</text>
+          <text x="234" y="394" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="24" fill="var(--ink)">$0.4131</text>
+          <!-- the proof: a tear line, then the seal -->
+          <line x1="0" y1="428" x2="260" y2="428" stroke="var(--line-strong)" stroke-width="1" stroke-dasharray="5 4"/>
+          <circle cx="40" cy="464" r="13" fill="var(--brand)"/>
+          <path d="M34 464.5 l4 4 l8 -9" fill="none" stroke="var(--on-brand)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="62" y="468" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--ink-subtle)">Verified at the source</text>
+        </g>
+        <path d="M0 14 L10 4 L20 14 L30 4 L40 14 L50 4 L60 14 L70 4 L80 14 L90 4 L100 14 L110 4 L120 14 L130 4 L140 14 L150 4 L160 14 L170 4 L180 14 L190 4 L200 14 L210 4 L220 14 L230 4 L240 14 L250 4 L260 14 V506 L250 516 L240 506 L230 516 L220 506 L210 516 L200 506 L190 516 L180 506 L170 516 L160 506 L150 516 L140 506 L130 516 L120 506 L110 516 L100 506 L90 516 L80 506 L70 516 L60 506 L50 516 L40 506 L30 516 L20 506 L10 516 L0 506 Z" fill="none" stroke="var(--line)" stroke-width="1"/>
+      </svg>
     </figure>
-  </div>
+  </section>
+
+  <section class="story shell rule" aria-labelledby="story-title">
+    <h2 id="story-title">Say you're adding AI to your app.</h2>
+    <ol class="beats">
+      <li class="beat">
+        <svg viewBox="0 0 150 150" aria-hidden="true"><path d="M0 8 L10 0 L20 8 L30 0 L40 8 L50 0 L60 8 L70 0 L80 8 L90 0 L100 8 L110 0 L120 8 L130 0 L140 8 L150 0 V142 L140 142 L130 150 L120 142 L110 150 L100 142 L90 150 L80 142 L70 150 L60 142 L50 150 L40 142 L30 150 L20 142 L10 150 L0 142 Z" fill="var(--surface)" stroke="var(--line)"/>
+<rect x="18" y="34" width="64" height="5" rx="2.5" fill="var(--bar)"/><rect x="18" y="52" width="48" height="5" rx="2.5" fill="var(--bar)"/>
+<line x1="18" y1="78" x2="132" y2="78" stroke="var(--line-strong)"/>
+<text x="132" y="112" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="22" fill="var(--ink)">$0.01</text></svg>
+        <div><h3>Day one</h3><p>You put each model's price in your code. It works.</p></div>
+      </li>
+      <li class="beat">
+        <svg viewBox="0 0 150 150" aria-hidden="true"><path d="M0 8 L10 0 L20 8 L30 0 L40 8 L50 0 L60 8 L70 0 L80 8 L90 0 L100 8 L110 0 L120 8 L130 0 L140 8 L150 0 V142 L140 142 L130 150 L120 142 L110 150 L100 142 L90 150 L80 142 L70 150 L60 142 L50 150 L40 142 L30 150 L20 142 L10 150 L0 142 Z" fill="var(--surface)" stroke="var(--line)"/>
+<rect x="18" y="34" width="64" height="5" rx="2.5" fill="var(--bar)"/><rect x="18" y="52" width="48" height="5" rx="2.5" fill="var(--bar)"/>
+<line x1="18" y1="72" x2="132" y2="72" stroke="var(--line-strong)"/>
+<text x="132" y="98" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="16" fill="var(--ink-subtle)">$0.01</text>
+<line x1="82" y1="93" x2="134" y2="93" stroke="var(--ink)" stroke-width="1.6"/>
+<text x="132" y="128" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="22" fill="var(--ink)">$0.02</text></svg>
+        <div><h3>Next month</h3><p>A provider changes a price, another adds peak hours. Your numbers are wrong, and nothing tells you.</p></div>
+      </li>
+      <li class="beat">
+        <svg viewBox="0 0 150 230" aria-hidden="true"><path d="M0 8 L10 0 L20 8 L30 0 L40 8 L50 0 L60 8 L70 0 L80 8 L90 0 L100 8 L110 0 L120 8 L130 0 L140 8 L150 0 V222 L140 222 L130 230 L120 222 L110 230 L100 222 L90 230 L80 222 L70 230 L60 222 L50 230 L40 222 L30 230 L20 222 L10 230 L0 222 Z" fill="var(--surface)" stroke="var(--line)"/><rect x="18" y="34" width="70" height="5" rx="2.5" fill="var(--bar)"/><rect x="110" y="34" width="22" height="5" rx="2.5" fill="var(--bar)"/><rect x="18" y="56" width="58" height="5" rx="2.5" fill="var(--bar)"/><rect x="114" y="56" width="18" height="5" rx="2.5" fill="var(--bar)"/><rect x="18" y="78" width="76" height="5" rx="2.5" fill="var(--bar)"/><rect x="108" y="78" width="24" height="5" rx="2.5" fill="var(--bar)"/><rect x="18" y="100" width="62" height="5" rx="2.5" fill="var(--bar)"/><rect x="112" y="100" width="20" height="5" rx="2.5" fill="var(--bar)"/><rect x="18" y="122" width="70" height="5" rx="2.5" fill="var(--bar)"/><rect x="110" y="122" width="22" height="5" rx="2.5" fill="var(--bar)"/><rect x="18" y="144" width="54" height="5" rx="2.5" fill="var(--bar)"/><rect x="116" y="144" width="16" height="5" rx="2.5" fill="var(--bar)"/>
+<line x1="18" y1="166" x2="132" y2="166" stroke="var(--line-strong)"/><line x1="18" y1="170" x2="132" y2="170" stroke="var(--line-strong)"/>
+<text x="132" y="204" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="22" fill="var(--ink)">$4,210</text></svg>
+        <div><h3>Month end</h3><p>The bill is one total. It never says who or what spent it.</p></div>
+      </li>
+      <li class="beat">
+        <svg viewBox="0 0 150 230" aria-hidden="true"><path d="M0 8 L10 0 L20 8 L30 0 L40 8 L50 0 L60 8 L70 0 L80 8 L90 0 L100 8 L110 0 L120 8 L130 0 L140 8 L150 0 V222 L140 222 L130 230 L120 222 L110 230 L100 222 L90 230 L80 222 L70 230 L60 222 L50 230 L40 222 L30 230 L20 222 L10 230 L0 222 Z" fill="var(--surface)" stroke="var(--line)"/><circle cx="22" cy="36.5" r="4" fill="var(--sapphire)"/><rect x="32" y="34" width="60" height="5" rx="2.5" fill="var(--ink-muted)"/><rect x="110" y="34" width="22" height="5" rx="2.5" fill="var(--ink)"/><circle cx="22" cy="58.5" r="4" fill="var(--rosewood)"/><rect x="32" y="56" width="48" height="5" rx="2.5" fill="var(--ink-muted)"/><rect x="114" y="56" width="18" height="5" rx="2.5" fill="var(--ink)"/><circle cx="22" cy="80.5" r="4" fill="var(--lagoon)"/><rect x="32" y="78" width="66" height="5" rx="2.5" fill="var(--ink-muted)"/><rect x="108" y="78" width="24" height="5" rx="2.5" fill="var(--ink)"/><circle cx="22" cy="102.5" r="4" fill="var(--sage)"/><rect x="32" y="100" width="52" height="5" rx="2.5" fill="var(--ink-muted)"/><rect x="112" y="100" width="20" height="5" rx="2.5" fill="var(--ink)"/><circle cx="22" cy="124.5" r="4" fill="var(--sapphire)"/><rect x="32" y="122" width="60" height="5" rx="2.5" fill="var(--ink-muted)"/><rect x="110" y="122" width="22" height="5" rx="2.5" fill="var(--ink)"/><circle cx="22" cy="146.5" r="4" fill="var(--heather)"/><rect x="32" y="144" width="44" height="5" rx="2.5" fill="var(--ink-muted)"/><rect x="116" y="144" width="16" height="5" rx="2.5" fill="var(--ink)"/>
+<line x1="18" y1="166" x2="132" y2="166" stroke="var(--line-strong)"/><line x1="18" y1="170" x2="132" y2="170" stroke="var(--line-strong)"/>
+<text x="132" y="198" text-anchor="end" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="22" fill="var(--ink)">$4,210</text>
+<circle cx="28" cy="212" r="8" fill="var(--brand)"/><path d="M24.5 212.4 l2.4 2.4 l4.8 -5.6" fill="none" stroke="var(--on-brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="42" y="216" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--ink-subtle)">today's prices</text></svg>
+        <div><h3>With ModelPenny</h3><p>Prices stay current with no deploy. Every call is priced, and you see it by any label you choose: a customer, a feature, a team.</p></div>
+      </li>
+    </ol>
+  </section>
+  <section class="trust shell rule" aria-labelledby="trust-title">
+    <h2 id="trust-title">Your data stays yours.</h2>
+    <div>
+      <figure class="record">
+        <figcaption>Everything your app sends us for one AI call</figcaption>
+<pre>{
+  <span class="key">"id":</span> <span class="long">"0193e2a4-7c1b-7d3e-9f00-2b6a1c4d5e6f",</span>
+  <span class="key">"time":</span> "2026-11-12T02:30:00Z",
+  <span class="key">"provider":</span> "example",
+  <span class="key">"model":</span> "example-large",
+  <span class="key">"usage":</span> {
+    <span class="key">"input":</span> 1200,
+    <span class="key">"cache_read":</span> 800,
+    <span class="key">"output":</span> 300,
+    <span class="key">"thinking":</span> 150
+  },
+  <span class="key">"labels":</span> {
+    <span class="key">"customer":</span> "c_1832",
+    <span class="key">"feature":</span> "search"
+  }
+}</pre>
+      </figure>
+      <ul class="promises">
+        <li><strong>No prompts, no answers.</strong> Numbers and the labels you choose, as above. That is all we'll ever receive.</li>
+        <li><strong>Nothing routes through us.</strong> Your app calls its providers directly, so we can't slow it down, and it works the same if we're down.</li>
+        <li><strong>No provider keys.</strong> The key you send us with can only send, so a leaked key can't read your data.</li>
+        <li><strong>Yours to take.</strong> We'll never sell your data. Export it, or delete all of it, whenever you like.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="why shell rule" aria-label="Why we are building ModelPenny">
+    <p>We build with AI too, and we got tired of it: prices that change overnight, bills that explain nothing, and tools that want your prompts and keys just to count your spend. So we're building the one we wanted, the careful way: engineered to be trusted, and plain about what it does and what it doesn't.</p>
+    <p class="sign">The ModelPenny team</p>
+  </section>
+  <section class="faq shell rule" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions</h2>
+    <details><summary>Does ModelPenny sit between my app and the AI provider?</summary><p>No. Your app keeps calling each provider directly. After a call, our SDK sends us the numbers in the background, so a slow or missing ModelPenny never touches your users.</p></details>
+    <details><summary>What will ModelPenny store?</summary><p>Only what your app sends: the provider, the model, the token counts, the time, and the labels you choose. Never your prompts, your answers or your provider keys.</p></details>
+    <details><summary>How do the prices stay current?</summary><p>We read each provider's own pricing page, keep the history of every price, and show the source and when we last checked it, so each call is priced at the rate that was live when you made it.</p></details>
+    <details><summary>Can I see the cost per customer or per feature?</summary><p>Yes. Label each call however you like, such as by customer, feature or team, and see the cost by any of them, across every provider you use.</p></details>
+  </section>
 </main>
 
-<footer class="site-footer shell">
+<footer class="site-footer shell rule">
   <p>ModelPenny is made by <a href="https://ordayer.com">Ordayer</a>.</p>
 </footer>
 </body>
