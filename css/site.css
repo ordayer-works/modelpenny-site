@@ -520,19 +520,10 @@ h2 {
     padding-block: 56px;
   }
 
-  /* The record quotes our real API contract, so its long id is kept whole: on a phone it drops to its own
-     indented line instead of making the box scroll sideways. */
   .record pre {
     padding: 14px;
     font-size: 11px;
     white-space: pre-wrap;
-  }
-
-  .record .long {
-    display: inline-block;
-    max-width: calc(100% - 4ch);
-    margin-left: 4ch;
-    overflow-wrap: anywhere;
   }
 
   .why {
@@ -541,6 +532,18 @@ h2 {
 
   .faq {
     padding-block: 48px 56px;
+  }
+}
+
+/* The record quotes our real API contract, so its long id is kept whole. On a narrow phone, where that line cannot
+   fit, the id sits on its own indented line instead of making the box scroll sideways. */
+
+@media (max-width: 30rem) {
+  .record .long {
+    display: inline-block;
+    width: calc(100% - 4ch);
+    margin-left: 4ch;
+    overflow-wrap: anywhere;
   }
 }
 
