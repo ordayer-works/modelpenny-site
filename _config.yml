@@ -1,0 +1,5 @@
+# GitHub Pages builds this repo with Jekyll. Only the website is served: the tools that draw its images and
+# the README stay off modelpenny.com.
+exclude:
+  - README.md
+  - tools
