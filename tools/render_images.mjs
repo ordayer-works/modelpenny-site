@@ -15,7 +15,13 @@ try {
   await page.emulateMedia({ colorScheme: "light" });
   await page.setViewportSize({ width: 1200, height: 630 });
   await page.goto("http://mpsite.local/tools/og.html", { waitUntil: "load" });
-  await page.evaluate(() => document.fonts.ready);
+  // The share image shows the same coin and receipt as the page, copied from index.html.
+  await page.evaluate(async () => {
+    const home = new DOMParser().parseFromString(await (await fetch("/index.html")).text(), "text/html");
+    document.getElementById("art").innerHTML = home.querySelector(".hero .art").innerHTML;
+    await Promise.all([...document.images].map((img) => img.decode().catch(() => {})));
+    await document.fonts.ready;
+  });
   await page.screenshot({ path: `${root}assets/og.png` });
 
   // The app icon is the coin on an obsidian tile, drawn edge to edge.

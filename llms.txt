@@ -1,0 +1,29 @@
+# ModelPenny
+
+> AI prices change. Your code shouldn't have to. ModelPenny keeps every AI model's price up to date, and gives you the means to track your AI spend by anything you label, such as a customer, a feature or a team, across every provider you use. It is not open yet.
+
+ModelPenny is made by Ordayer (https://ordayer.com). Contact: contact@ordayer.com.
+
+## The problem it solves
+
+- Teams copy each model's price into their code. Providers change prices, add peak-hour rates and new charges, and the copied numbers quietly go wrong.
+- A provider's bill is one total. It does not say which customer, feature or team spent it, and across several providers the team ends up building and maintaining its own ledger.
+
+## How it will work
+
+- Prices: ModelPenny reads each provider's own pricing page, keeps the history of every price, and shows each price with its source and when it was last checked. Each call is priced at the rate that was live when it was made.
+- Tracking: after each AI call, the app's SDK sends ModelPenny a small record of numbers: the provider, the model, the token counts, the time and the labels the app chooses. The app sees its costs by any of those labels.
+
+## What ModelPenny will never do
+
+- See prompts or answers. It receives numbers and labels only.
+- Sit in the path of a call. The app keeps calling each provider directly, so ModelPenny cannot slow it down, and the app works the same if ModelPenny is down.
+- Ask for provider keys. The key an app sends records with can only send records.
+- Sell data. Customers can export or delete all of their data at any time.
+
+## Questions
+
+- Does ModelPenny sit between my app and the AI provider? No. Your app keeps calling each provider directly. After a call, our SDK sends us the numbers in the background, so a slow or missing ModelPenny never touches your users.
+- What will ModelPenny store? Only what your app sends: the provider, the model, the token counts, the time, and the labels you choose. Never your prompts, your answers or your provider keys.
+- How do the prices stay current? We read each provider's own pricing page, keep the history of every price, and show the source and when we last checked it, so each call is priced at the rate that was live when you made it.
+- Can I see the cost per customer or per feature? Yes. Label each call however you like, such as by customer, feature or team, and see the cost by any of them, across every provider you use.
