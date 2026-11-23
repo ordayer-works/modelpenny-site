@@ -25,7 +25,7 @@
 <link rel="preload" href="/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "ModelPenny", "url": "https://modelpenny.com/", "description": "AI model prices kept up to date, and the means to track AI spend by any label across every provider. Not open yet.", "publisher": {"@type": "Organization", "name": "Ordayer", "url": "https://ordayer.com/"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does ModelPenny sit between my app and the AI provider?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your app keeps calling each provider directly. After a call, our SDK sends us the numbers in the background, so a slow or missing ModelPenny never touches your users."}}, {"@type": "Question", "name": "What will ModelPenny store?", "acceptedAnswer": {"@type": "Answer", "text": "Only what your app sends: the provider, the model, the token counts, the time, and the labels you choose. Never your prompts, your answers or your provider keys."}}, {"@type": "Question", "name": "How do the prices stay current?", "acceptedAnswer": {"@type": "Answer", "text": "We read each provider's own pricing page, keep the history of every price, and show the source and when we last checked it, so each call is priced at the rate that was live when you made it."}}, {"@type": "Question", "name": "Can I see the cost per customer or per feature?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Label each call however you like, such as by customer, feature or team, and see the cost by any of them, across every provider you use."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does ModelPenny sit between my app and the AI provider?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your app keeps calling each provider directly. After a call, our SDK sends us a small record in the background, so a slow or missing ModelPenny never touches your users."}}, {"@type": "Question", "name": "What will ModelPenny store?", "acceptedAnswer": {"@type": "Answer", "text": "Only what your app sends: the provider, the model, the token counts, the time, how the call was billed (such as batch or a priority tier), whether it finished, and the labels you choose. Never your prompts, your answers or your provider keys."}}, {"@type": "Question", "name": "How do the prices stay current?", "acceptedAnswer": {"@type": "Answer", "text": "We read each provider's own pricing page, keep the history of every price, and show the source and when we last checked it, so each call is priced at the rate that was live when you made it."}}, {"@type": "Question", "name": "Can I see the cost per customer or per feature?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Label each call however you like, such as by customer, feature or team, and see the cost by any of them, across every provider you use."}}]}</script>
 </head>
 <body>
 <header class="site-header shell">
@@ -139,14 +139,19 @@
     <span class="key">"output":</span> 300,
     <span class="key">"thinking":</span> 150
   },
+  <span class="key">"switches":</span> {
+    <span class="key">"batch":</span> false,
+    <span class="key">"service_tier":</span> "standard"
+  },
   <span class="key">"labels":</span> {
     <span class="key">"customer":</span> "c_1832",
     <span class="key">"feature":</span> "search"
-  }
+  },
+  <span class="key">"incomplete":</span> false
 }</pre>
       </figure>
       <ul class="promises">
-        <li><strong>No prompts, no answers.</strong> Numbers and the labels you choose, as above. That is all we'll ever receive.</li>
+        <li><strong>No prompts, no answers.</strong> Only the record above: token counts, how the call was billed, and the labels you choose. That is all we'll ever receive.</li>
         <li><strong>Nothing routes through us.</strong> Your app calls its providers directly, so we can't slow it down, and it works the same if we're down.</li>
         <li><strong>No provider keys.</strong> The key you send us with can only send, so a leaked key can't read your data.</li>
         <li><strong>Yours to take.</strong> We'll never sell your data. Export it, or delete all of it, whenever you like.</li>
@@ -159,8 +164,8 @@
   </section>
   <section class="faq shell rule" aria-labelledby="faq-title">
     <h2 id="faq-title">Questions</h2>
-    <details><summary>Does ModelPenny sit between my app and the AI provider?</summary><p>No. Your app keeps calling each provider directly. After a call, our SDK sends us the numbers in the background, so a slow or missing ModelPenny never touches your users.</p></details>
-    <details><summary>What will ModelPenny store?</summary><p>Only what your app sends: the provider, the model, the token counts, the time, and the labels you choose. Never your prompts, your answers or your provider keys.</p></details>
+    <details><summary>Does ModelPenny sit between my app and the AI provider?</summary><p>No. Your app keeps calling each provider directly. After a call, our SDK sends us a small record in the background, so a slow or missing ModelPenny never touches your users.</p></details>
+    <details><summary>What will ModelPenny store?</summary><p>Only what your app sends: the provider, the model, the token counts, the time, how the call was billed (such as batch or a priority tier), whether it finished, and the labels you choose. Never your prompts, your answers or your provider keys.</p></details>
     <details><summary>How do the prices stay current?</summary><p>We read each provider's own pricing page, keep the history of every price, and show the source and when we last checked it, so each call is priced at the rate that was live when you made it.</p></details>
     <details><summary>Can I see the cost per customer or per feature?</summary><p>Yes. Label each call however you like, such as by customer, feature or team, and see the cost by any of them, across every provider you use.</p></details>
   </section>
