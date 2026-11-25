@@ -14,6 +14,7 @@ The look, the words and the logo come from the ModelPenny design system, which t
 | `assets/` | The logo lockups and the share image (`og.png`) |
 | `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` | The app icon: the coin on an obsidian tile |
 | `tools/` | `og.html`, the share image's layout; `render_images.mjs` and `make_favicon.py` redraw the PNGs |
+| `.claude/` | A guard that holds Claude back from starting heavy work, such as a test browser, while the computer is low on memory. Jekyll never publishes `.claude` |
 
 ## Changing it
 
